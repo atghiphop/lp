@@ -37,7 +37,7 @@
             color: #666;
         }
 
-        input[type="text"] {
+        input[type="tel"] {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -64,15 +64,31 @@
             background-color: #0056b3;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 </head>
 <body>
     <div class="container">
         <h1>Enter Your Phone Number</h1>
         <p>We will contact you shortly.</p>
         <form action="https://docs.google.com/forms/d/e/1FAIpQLSeSzuU6nWxlc7mgtXYBG8lm93CPN6Im0-1qnjL9bXqOKXNffQ/formResponse" method="POST" target="_self">
-            <input type="text" name="entry.2119975728" placeholder="Phone Number" required>
+            <input type="tel" id="phone" name="entry.2119975728" placeholder="Phone Number" required>
             <button type="submit" class="btn">Submit</button>
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "us",
+            preferredCountries: ["us", "gb", "ca", "au"], // Example of preferred countries
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+
+        document.querySelector("form").addEventListener("submit", function() {
+            const phoneNumber = phoneInput.getNumber();
+            phoneInputField.value = phoneNumber;
+        });
+    </script>
 </body>
 </html>
