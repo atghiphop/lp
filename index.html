@@ -76,7 +76,7 @@
     <div class="container">
         <h1>Enter Your Phone Number</h1>
         <p>We will contact you shortly.</p>
-        <form id="phone-form" onsubmit="handleSubmit(event)">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeSzuU6nWxlc7mgtXYBG8lm93CPN6Im0-1qnjL9bXqOKXNffQ/formResponse" method="POST" target="_self" onsubmit="displayThankYouMessage()">
             <input type="text" name="entry.2119975728" placeholder="Phone Number" required>
             <button type="submit" class="btn">Submit</button>
         </form>
@@ -84,26 +84,10 @@
     </div>
 
     <script>
-        function handleSubmit(event) {
-            event.preventDefault(); // Prevent the default form submission
-            const form = document.getElementById('phone-form');
-            const thankYouMessage = document.querySelector('.thank-you-message');
-
-            // Create a new FormData object to send the form data via AJAX
-            const formData = new FormData(form);
-
-            // Send the form data using fetch API
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'  // Using no-cors mode to avoid CORS issues
-            }).then(() => {
-                // Hide the form and show the thank-you message
-                form.style.display = 'none';
-                thankYouMessage.style.display = 'block';
-            }).catch((error) => {
-                console.error('Error!', error.message);
-            });
+        function displayThankYouMessage() {
+            // Display thank-you message after submission
+            document.querySelector('.thank-you-message').style.display = 'block';
+            return false; // Prevent default form submission (to display thank-you message)
         }
     </script>
 </body>
