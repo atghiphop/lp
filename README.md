@@ -1,2 +1,2 @@
 # lp
-lp practicer site
+lp practice site
