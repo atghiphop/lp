@@ -76,18 +76,19 @@
     <div class="container">
         <h1>Enter Your Phone Number</h1>
         <p>We will contact you shortly.</p>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeSzuU6nWxlc7mgtXYBG8lm93CPN6Im0-1qnjL9bXqOKXNffQ/formResponse" method="POST" target="_self" onsubmit="displayThankYouMessage()">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSeSzuU6nWxlc7mgtXYBG8lm93CPN6Im0-1qnjL9bXqOKXNffQ/formResponse" method="POST" target="hidden_iframe" onsubmit="showThankYouMessage()">
             <input type="text" name="entry.2119975728" placeholder="Phone Number" required>
             <button type="submit" class="btn">Submit</button>
         </form>
         <p class="thank-you-message">Thank you, look for a message soon!</p>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
 
     <script>
-        function displayThankYouMessage() {
-            // Display thank-you message after submission
-            document.querySelector('.thank-you-message').style.display = 'block';
-            return false; // Prevent default form submission (to display thank-you message)
+        function showThankYouMessage() {
+            setTimeout(function(){
+                document.querySelector('.thank-you-message').style.display = 'block';
+            }, 500); // Show the message after a short delay
         }
     </script>
 </body>
